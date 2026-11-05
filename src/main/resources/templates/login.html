@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Sistema de Cardapio</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+        body { background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        .container { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
+        .form-group { text-align: left; margin-bottom: 15px; }
+        label { display: block; font-size: 14px; margin-bottom: 5px; font-weight: bold; color: #333; }
+        input, select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px; }
+        .btn { width: 100%; padding: 12px; background-color: #2ecc71; border: none; border-radius: 5px; color: white; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+        .error { background-color: #f8d7da; color: #721c24; padding: 10px; border-radius: 5px; margin-bottom: 15px; font-size: 13px; text-align: left; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sistema da Cardapio</h2>
+        
+        <div class="error" th:if="${erro}" th:text="${erro}"></div>
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <label>Matrícula:</label>
+                <input type="text" name="matricula" required placeholder="Digite sua matrícula">
+            </div>
+            <div class="form-group">
+                <label>Senha:</label>
+                <input type="password" name="senha" required placeholder="Digite sua senha">
+            </div>
+            <div class="form-group">
+                <label>Selecione seu Perfil:</label>
+                <select name="perfil" required>
+                    <option value="ALUNO">Estudante</option>
+                    <option value="NUTRICIONISTA">Servidora (Nutricionista)</option>
+                    <option value="COZINHEIRA">Servidora (Cozinheira)</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+    </div>
+</body>
+</html>
